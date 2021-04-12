@@ -48,6 +48,26 @@ function marker(data) {
   }).addTo(myMap);
 }
 
+var legend = L.control({position: 'bottomright'});
+
+legend.onAdd = function (myMap) {
+
+    var div = L.DomUtil.create('div', 'info legend'),
+        grades = [0, 1, 2, 3, 4, 5],
+        labels = [];
+
+    // loop through our density intervals and generate a label with a colored square for each interval
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+            '<i style="background:' + magcolor(grades[i]) + '"></i> ' +
+            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+    }
+
+    return div;
+};
+
+legend.addTo(myMap);
+
 function magcolor(mag) {
 
   return mag >= 5 ? '#f50a18' :
@@ -58,6 +78,8 @@ function magcolor(mag) {
          mag >= 0 ? '#8cb709' :
                   'white';
 }
+
+
 
 
 
