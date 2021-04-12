@@ -23,6 +23,6 @@ Your first task is to visualize an earthquake data set.
 
 ## What I learned
 
-Besides the importance of geo location and how display it, this activity show me how valuable information the website of the JS libraries can offer 
+Besides the importance of geo location and how display it, this activity show me how valuable information the website of the JS libraries can offer, for example most of the requiarements for this where well explained on https://leafletjs.com/examples/choropleth/
 
 
