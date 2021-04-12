@@ -55,14 +55,16 @@ legend.onAdd = function (myMap) {
     var div = L.DomUtil.create('div', 'info legend'),
         grades = [0, 1, 2, 3, 4, 5],
         labels = [];
-
+    
+    div.innerHTML += '<strong>Earthquake Mag</strong><br>';
+    div.innerHTML +='<hr>'
     // loop through our density intervals and generate a label with a colored square for each interval
     for (var i = 0; i < grades.length; i++) {
-        div.innerHTML +=
+        div.innerHTML += 
             '<i style="background:' + magcolor(grades[i]) + '"></i> ' +
             grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
     }
-
+    
     return div;
 };
 
