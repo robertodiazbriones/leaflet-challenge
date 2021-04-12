@@ -38,7 +38,7 @@ function marker(data) {
     pointToLayer: function (feature, latlng) {
         return L.circleMarker(latlng, {
             radius: feature.properties.mag * 5,
-            fillColor: '#f50a18',
+            fillColor: magcolor(feature.properties.mag),
             color: "#000",
             weight: 1,
             opacity: 1,
@@ -46,7 +46,17 @@ function marker(data) {
         });
     }
   }).addTo(myMap);
- 
+}
+
+function magcolor(mag) {
+
+  return mag >= 5 ? '#f50a18' :
+         mag >= 4 ? '#f5720a' :
+         mag >= 3 ? '#f39c1d' :
+         mag >= 2 ? '#f0cc3d' :
+         mag >= 1 ? '#aadb12' :
+         mag >= 0 ? '#8cb709' :
+                  'white';
 }
 
 
