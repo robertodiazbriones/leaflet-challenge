@@ -17,18 +17,23 @@ var myMap = L.map("map", {
     
   // Grabbing our GeoJSON data..
 d3.json(link, function(data){
-  successHandle(data);
+  marker(data);
 });
 
-function errorHandle(error){
-  console.log("Error occurred! ", error)
-}
+function marker(data) {
 
-function successHandle(data) {
+  
+
+  function onEachFeature(feature, layer) {
+    layer.bindPopup("<h3>" + feature.properties.place +
+      "</h3><hr><p>" + new Date(feature.properties.time) + "</p>" +
+      "<hr><p>Magnitude: " + feature.properties.mag + "</p>");
+}
 
   // Creating a GeoJSON layer with the data
   L.geoJson(data, {
 
+    onEachFeature: onEachFeature,
     // Bubble size
     pointToLayer: function (feature, latlng) {
         return L.circleMarker(latlng, {
@@ -41,7 +46,9 @@ function successHandle(data) {
         });
     }
   }).addTo(myMap);
+ 
 }
 
 
-  
+
+
